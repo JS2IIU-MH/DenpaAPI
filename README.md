@@ -2,6 +2,7 @@
 総務省、無線局等情報検索APIからデータ取得するアプリ
 
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+![pylint workflow](https://github.com/JS2IIU-MH/DenpaAPI/actions/workflows/pylint.yml/badge.svg)
 
 免責事項等につきましては、当リポジトリの[LICENSE](LICENSE)をご覧ください。
 
@@ -14,15 +15,16 @@
     - [コード値一覧](https://www.tele.soumu.go.jp/resource/j/musen/webapi/mw_code.pdf)
     - [Web-API利用規約](https://www.tele.soumu.go.jp/j/musen/webapi/kiyaku/index.htm)
 
-## サンプル
+## サンプルプログラム
 - [`denpa_basic.py`](denpa_basic.py)
     - アマチュア無線局の免許数検索
     - アマチュア無線局リスト取得
     - アマチュア無線局、コールサインで検索し詳細情報を得る
-
+- `denpa_gui.py' (comming soon)
+    - コールサイン検索のGUI版。Hamlogの免許状Get's相当の機能。
 
 ## SSL Errorの対応方法
-`[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled`が返ってきてしまう場合、以下の対応をすることでエラー解消します。自己責任で対応ください。
+総務省、電波利用ホームページ、無線局等情報検索のWeb-APIにリクエストして`[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled`が返ってきてしまう場合、以下の対応をすることでエラー解消します。自己責任で対応ください。
 
 ### openssl.cnf
 任意のディレクトリに`openssl.cnf`を作成する。
