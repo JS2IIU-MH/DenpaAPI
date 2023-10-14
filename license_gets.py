@@ -7,6 +7,7 @@ import urllib.parse
 import webbrowser
 
 from denpa_basic import DenpaSearch
+import ja_call
 
 
 class Application(tk.Frame):
@@ -115,15 +116,18 @@ class Application(tk.Frame):
         callsign = callsign.upper()
 
         if len(callsign) > 4:
-            info_dict = DenpaSearch.get_station_detail_by_callsign(callsign)
-            # print(info_dict)
 
             out_text = ''
 
-            num = int(info_dict['musenInformation']['totalCount'])
-            last_update = info_dict['musenInformation']['lastUpdateDate']
+            if ja_call.is_ja_call(callsign):
+                info_dict = DenpaSearch.get_station_detail_by_callsign(callsign)
 
-            out_text = out_text + f'*データ更新日： {last_update}\n'
+                num = int(info_dict['musenInformation']['totalCount'])
+                last_update = info_dict['musenInformation']['lastUpdateDate']
+
+                out_text = out_text + f'*データ更新日： {last_update}\n'
+            else:
+                num = 0
 
             if num != 0:
                 self.record_matched = True

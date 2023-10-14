@@ -24,13 +24,19 @@
     - アマチュア無線局、コールサインで検索し詳細情報を得る
 - [`license_gets.py`](license_gets.py)
     - コールサイン検索のGUI版。Hamlogさまの免許状Get's類似の機能。免許状検索、QRZ.com表示、マップ表示機能。
-- [`ja_call.py`](ja_call.py)
-    - JAコールサインかどうか判定する
+    - コールサインを入力し、QTHボタンをクリックするとコールサインのQTHと免許状情報を表示します。
+    - Fromボタン、Toボタンには今のところ機能を割り当てていません。
+    - QRZボタンをクリックすると、入力されたコールサインでQRZ.COMを表示します。
+    - Mapボタンをクリックすると、Googleマップを表示することができます。検索した無線局設置場所の情報から市町村全体の地図を表示します。
+
 
 <!--
 ![license_gets](doc/license_gets.png)
 -->
 <p align="center"><img width="400px" src="doc/license_gets.png"></p>
+
+- [`ja_call.py`](ja_call.py)
+    - JAコールサインかどうか判定する
 
 ## SSL Errorの対応方法
 総務省、電波利用ホームページ、無線局等情報検索のWeb-APIにリクエストして`[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled`が返ってきてしまう場合、以下の対応をすることでエラー解消します。自己責任で対応ください。
