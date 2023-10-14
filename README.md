@@ -22,11 +22,15 @@
     - アマチュア無線局の免許数検索
     - アマチュア無線局リスト取得
     - アマチュア無線局、コールサインで検索し詳細情報を得る
-- [`license_get.py`](license_gets.py)
+- [`license_gets.py`](license_gets.py)
     - コールサイン検索のGUI版。Hamlogさまの免許状Get's類似の機能。免許状検索、QRZ.com表示、マップ表示機能。
+- [`ja_call.py`](ja_call.py)
+    - JAコールサインかどうか判定する
 
+<!--
 ![license_gets](doc/license_gets.png)
-
+-->
+<p align="center"><img width="400px" src="doc/license_gets.png"></p>
 
 ## SSL Errorの対応方法
 総務省、電波利用ホームページ、無線局等情報検索のWeb-APIにリクエストして`[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled`が返ってきてしまう場合、以下の対応をすることでエラー解消します。自己責任で対応ください。
@@ -69,4 +73,4 @@ export OPENSSL_CONF=/path/to/custom/openssl.cnf
 - [Turbo HAMLOG最新版](https://hamlog.sakura.ne.jp/mou/index.html)
 ### implict relative import, explcit relative import
 - [[Python] importの躓きどころ - Qiita](https://qiita.com/ysk24ok/items/2711295d83218c699276)
-    - package内のモジュールをimportするためには、`from . import mymodule1`のように`relative import`であることを明示しなければならない（これを`explict relative import`と呼ぶ）。
+    > package内のモジュールをimportするためには、`from . import mymodule1`のように`relative import`であることを明示しなければならない（これを`explict relative import`と呼ぶ）。
