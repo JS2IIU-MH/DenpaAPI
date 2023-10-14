@@ -84,7 +84,7 @@ class DenpaSearch():
         json_dict = json.loads(res.text)
 
         return json_dict
-    
+
     @classmethod
     def get_num_station_information_by_callsing(cls, callsign):
         ''' get number of license '''

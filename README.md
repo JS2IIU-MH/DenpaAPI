@@ -62,3 +62,6 @@ export OPENSSL_CONF=/path/to/custom/openssl.cnf
 ### Hamlog
 - [Turbo HAMLOG HOMEPAGE](http://www.hamlog.com/)
 - [Turbo HAMLOG最新版](https://hamlog.sakura.ne.jp/mou/index.html)
+### implict relative import, explcit relative import
+- [[Python] importの躓きどころ - Qiita](https://qiita.com/ysk24ok/items/2711295d83218c699276)
+    - package内のモジュールをimportするためには、`from . import mymodule1`のように`relative import`であることを明示しなければならない（これを`explict relative import`と呼ぶ）。
