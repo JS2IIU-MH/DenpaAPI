@@ -20,8 +20,8 @@
     - アマチュア無線局の免許数検索
     - アマチュア無線局リスト取得
     - アマチュア無線局、コールサインで検索し詳細情報を得る
-- `denpa_gui.py' (comming soon)
-    - コールサイン検索のGUI版。Hamlogの免許状Get's相当の機能。
+- []`license_get.py`](license_gets.py)
+    - コールサイン検索のGUI版。Hamlogの免許状Get's相当の機能。免許状検索、QRZ.com表示、マップ表示機能。
 
 ## SSL Errorの対応方法
 総務省、電波利用ホームページ、無線局等情報検索のWeb-APIにリクエストして`[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled`が返ってきてしまう場合、以下の対応をすることでエラー解消します。自己責任で対応ください。
@@ -59,3 +59,6 @@ export OPENSSL_CONF=/path/to/custom/openssl.cnf
 - [requestsモジュールでダウンロードに失敗する時の対策方法 - ガンマソフト](https://gammasoft.jp/support/solutions-of-requests-get-failed/)
 ### JSON
 - [【Python入門】JSONをパースする方法 - Qiita](https://qiita.com/Morio/items/5170c103647ef3a4aa69)
+### Hamlog
+- [Turbo HAMLOG HOMEPAGE](http://www.hamlog.com/)
+- [Turbo HAMLOG最新版](https://hamlog.sakura.ne.jp/mou/index.html)
