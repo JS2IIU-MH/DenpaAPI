@@ -6,7 +6,7 @@ import tkinter as tk
 import urllib.parse
 import webbrowser
 
-from .denpa_basic import DenpaSearch
+from denpa_basic import DenpaSearch
 
 
 class Application(tk.Frame):
