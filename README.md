@@ -16,12 +16,17 @@
     - [Web-API利用規約](https://www.tele.soumu.go.jp/j/musen/webapi/kiyaku/index.htm)
 
 ## サンプルプログラム
+これらサンプルプログラムを動かすにあたって、総務省無線局等情報検索機能Web-APIにアクセスします。その際にSSL Errorが出る場合があります。対処方法は次のセクションに記載していますので参考にしてください。
 - [`denpa_basic.py`](denpa_basic.py)
+    - 無線局検索Web-APIにアクセスするための部品。
     - アマチュア無線局の免許数検索
     - アマチュア無線局リスト取得
     - アマチュア無線局、コールサインで検索し詳細情報を得る
-- []`license_get.py`](license_gets.py)
-    - コールサイン検索のGUI版。Hamlogの免許状Get's相当の機能。免許状検索、QRZ.com表示、マップ表示機能。
+- [`license_get.py`](license_gets.py)
+    - コールサイン検索のGUI版。Hamlogさまの免許状Get's類似の機能。免許状検索、QRZ.com表示、マップ表示機能。
+
+![license_gets](doc/license_gets.png)
+
 
 ## SSL Errorの対応方法
 総務省、電波利用ホームページ、無線局等情報検索のWeb-APIにリクエストして`[SSL: UNSAFE_LEGACY_RENEGOTIATION_DISABLED] unsafe legacy renegotiation disabled`が返ってきてしまう場合、以下の対応をすることでエラー解消します。自己責任で対応ください。

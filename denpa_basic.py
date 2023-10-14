@@ -86,6 +86,29 @@ class DenpaSearch():
         return json_dict
 
     @classmethod
+    def get_station_detail_by_callsign(cls, callsign):
+        ''' get list of Amateur radio stations '''
+        headers = {'Accept': '*/*',
+                   'Accept-Encoding': 'gzip, deflate',
+                   'User-Agent': AGENT_SAFARI_MAC,
+                   }
+        params = {'ST': 1, 'DA': 1, 'SC': 1,
+                  'DC': 1, 'OF': 2, 'OW': 'AT', 'MA': callsign}
+        try:
+            res = requests.get(url=BASE_URL + 'list',
+                               headers=headers,
+                               params=params,
+                               timeout=(3.0, 7.5),
+                               # verify=True,
+                               )
+        except Timeout:
+            print('requests timeout error')
+
+        json_dict = json.loads(res.text)
+
+        return json_dict
+
+    @classmethod
     def get_num_station_information_by_callsing(cls, callsign):
         ''' get number of license '''
         headers = {'Accept': '*/*',
@@ -115,7 +138,7 @@ def main():
     # result = DenpaSearch.get_total_amateur_stations()
     # result = DenpaSearch.get_list_of_amateur_stations()
     # result = DenpaSearch.get_station_information_by_callsign('JS2IIU')
-    result = DenpaSearch.get_num_station_information_by_callsing('JS2IIU')
+    result = DenpaSearch.get_station_detail_by_callsign('JS2IIU')
 
     print(result)
 

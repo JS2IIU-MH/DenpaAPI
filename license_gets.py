@@ -6,7 +6,7 @@ import tkinter as tk
 import urllib.parse
 import webbrowser
 
-from .denpa_basic import DenpaSearch
+from denpa_basic import DenpaSearch
 
 
 class Application(tk.Frame):
@@ -115,7 +115,8 @@ class Application(tk.Frame):
         callsign = callsign.upper()
 
         if len(callsign) > 4:
-            info_dict = DenpaSearch.get_station_information_by_callsign(callsign)
+            info_dict = DenpaSearch.get_station_detail_by_callsign(callsign)
+            # print(info_dict)
 
             out_text = ''
 
@@ -127,13 +128,21 @@ class Application(tk.Frame):
             if num != 0:
                 self.record_matched = True
                 for _ in range(num):
-                    station_name = info_dict['musen'][_]['listInfo']['name']
-                    # purpose = info_dict['musen'][_]['radioStationPurpose']
                     self.address = info_dict['musen'][_]['listInfo']['tdfkCd']
-                    license_date = info_dict['musen'][_]['listInfo']['licenseDate']
+                    station_name = info_dict['musen'][_]['listInfo']['name']
+                    baseaddress = \
+                        info_dict['musen'][_]['detailInfo']['radioEuipmentLocation']
+                    license_date = info_dict['musen'][_]['detailInfo']['licenseDate']
+                    valid_terms = info_dict['musen'][_]['detailInfo']['validTerms']
+                    movement_area = info_dict['musen'][_]['detailInfo']['movementArea']
+                    radio_spec = info_dict['musen'][_]['detailInfo']['radioSpec1']
 
                     out_text = out_text +\
-                        f'[{_}/{num}]{station_name}\n{self.address}\n{license_date}から\n\n'
+                        f'[{_}/{num}]{station_name}\n{baseaddress}\n' +\
+                        f'{license_date}から {valid_terms}\n' +\
+                        f'{movement_area}\n{radio_spec}\n'
+
+                out_text = f'設置場所=  {self.address}\n' + out_text
             else:
                 self.record_matched = False
                 out_text = out_text + '結果なし\n'
