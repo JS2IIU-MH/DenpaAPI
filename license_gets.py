@@ -3,6 +3,8 @@
 '''
 
 import tkinter as tk
+from tkinter import ttk
+
 import urllib.parse
 import webbrowser
 
@@ -28,6 +30,9 @@ class Application(tk.Frame):
         self.record_matched = False
         self.address = ''
 
+        INITIAL_MSG = '総務省による免許状情報の交信には、\nタイムラグがあります。\n' +\
+            '相手方の免許の有効期限が少し過ぎていても、\n再免許済みの可能性がありますのでご注意を!'
+
         frame1 = tk.Frame(master)
 
         label1 = tk.Label(frame1,
@@ -43,6 +48,7 @@ class Application(tk.Frame):
                           # relief='ridge',
                           # textvariable=some_StringVar,
                           )
+        
         label1.grid(row=0, column=0)
 
         self.entry1 = tk.Entry(frame1,
@@ -51,15 +57,19 @@ class Application(tk.Frame):
                                # font=('',10,'bold'),
                                justify=tk.CENTER,
                                relief='ridge',
-                               textvariable='JS2IIU',
+                               # textvariable='JS2IIU',
                                # border=1,
                                )
         self.entry1.grid(row=0, column=1)
+        label1.bind('<Button-1>', self.click_call)
+        self.entry1.bind('<KeyRelease>', self.entry_key_release)
+        entry1_tooltip = Tooltip(self.entry1, 'コールサインを入力してEnterキーを押してください')
 
         qth_button = tk.Button(frame1,
                                text='QTH',
                                command=self.qth_command)
         qth_button.grid(row=0, column=2)
+        qth_button_tooltip = Tooltip(qth_button, 'QTHと免許状情報を検索して表示します')
 
         from_button = tk.Button(frame1,
                                 text='From')
@@ -73,16 +83,19 @@ class Application(tk.Frame):
                                text='QRZ',
                                command=self.qrz_command)
         qrz_button.grid(row=0, column=5)
+        qrz_button_tooltip = Tooltip(qrz_button, 'QRZ.comでコールサインを検索します')
 
         map_button = tk.Button(frame1,
                                text='Map',
                                command=self.map_command)
         map_button.grid(row=0, column=6)
+        map_button_tooltip = Tooltip(map_button, 'Google MapsでQTHの地図を表示します')
 
         frame1.grid(pady=10)
 
         # 検索結果表示用ラベル
         self.out_label = tk.Label(master,
+                                  text=INITIAL_MSG,
                                   width=45, height=12,
                                   font=('', 15),
                                   # bg='lightgreen',
@@ -172,6 +185,47 @@ class Application(tk.Frame):
             self.out_label['text'] = f'Google Mapsで, {self.address}のページを開きます。'
         else:
             self.out_label['text'] = 'コールサインを入力してQTHボタンを押してください。'
+
+    def click_call(self, event):
+        ''' clear callsign '''
+        # print('delete')
+        self.entry1.delete(0, tk.END)
+
+    def entry_key_release(self, event):
+        ''' Keyrelease event handler on Entry1 '''
+        # print(event.keycode, event.keysym, repr(event.keysym), type(event.keysym))
+        if event.keysym == 'Return':
+            self.qth_command()
+
+
+class Tooltip:
+    ''' ToolTip class'''
+    def __init__(self, widget, text):
+        self.widget = widget
+        self.text = text
+        self.tooltip = None
+        self.widget.bind("<Enter>", self.show)
+        self.widget.bind("<Leave>", self.hide)
+
+    def show(self, event=None):
+        x, y, _, _ = self.widget.bbox("insert")
+        x += self.widget.winfo_rootx() + 30
+        y += self.widget.winfo_rooty() + 30
+
+        self.tooltip = tk.Toplevel(self.widget)
+        self.tooltip.wm_overrideredirect(True)
+        self.tooltip.wm_geometry(f"+{x}+{y}")
+
+        label = ttk.Label(self.tooltip,
+                          text=self.text,
+                          background="#ffffe0", relief="solid",
+                          borderwidth=1, anchor=tk.CENTER)
+        label.pack(ipadx=3, ipady=3)
+
+    def hide(self, event=None):
+        if self.tooltip:
+            self.tooltip.destroy()
+            self.tooltip = None
 
 
 def main():

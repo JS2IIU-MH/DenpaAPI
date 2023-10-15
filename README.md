@@ -23,8 +23,9 @@
     - アマチュア無線局リスト取得
     - アマチュア無線局、コールサインで検索し詳細情報を得る
 - [`license_gets.py`](license_gets.py)
-    - コールサイン検索のGUI版。Hamlogさまの免許状Get's類似の機能。免許状検索、QRZ.com表示、マップ表示機能。
-    - コールサインを入力し、QTHボタンをクリックするとコールサインのQTHと免許状情報を表示します。
+    - コールサイン検索のGUI版。Hamlog様の免許状Get'sを見た目だけ真似してみました。免許状検索、QRZ.com表示、マップ表示機能。
+    - Callをクリックするとコールサインをクリアします。
+    - コールサインを入力し、QTHボタンをクリックするとコールサインのQTHと免許状情報を表示します。コールサインを入力してEnterキーを押しても同じ動作をします。
     - Fromボタン、Toボタンには今のところ機能を割り当てていません。
     - QRZボタンをクリックすると、入力されたコールサインでQRZ.COMを表示します。
     - Mapボタンをクリックすると、Googleマップを表示することができます。検索した無線局設置場所の情報から市町村全体の地図を表示します。
@@ -80,3 +81,5 @@ export OPENSSL_CONF=/path/to/custom/openssl.cnf
 ### implict relative import, explcit relative import
 - [[Python] importの躓きどころ - Qiita](https://qiita.com/ysk24ok/items/2711295d83218c699276)
     > package内のモジュールをimportするためには、`from . import mymodule1`のように`relative import`であることを明示しなければならない（これを`explict relative import`と呼ぶ）。
+### tkinter
+- [Tkinter Label – Tooltip - Python Examples](https://pythonexamples.org/python-tkinter-label-tooltip/)
