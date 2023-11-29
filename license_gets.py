@@ -48,7 +48,7 @@ class Application(tk.Frame):
                           # relief='ridge',
                           # textvariable=some_StringVar,
                           )
-        
+
         label1.grid(row=0, column=0)
 
         self.entry1 = tk.Entry(frame1,
@@ -63,13 +63,14 @@ class Application(tk.Frame):
         self.entry1.grid(row=0, column=1)
         label1.bind('<Button-1>', self.click_call)
         self.entry1.bind('<KeyRelease>', self.entry_key_release)
-        entry1_tooltip = Tooltip(self.entry1, 'コールサインを入力してEnterキーを押してください')
+        # entry1_tooltip = Tooltip(self.entry1, 'コールサインを入力してEnterキーを押してください')
+        Tooltip(self.entry1, 'コールサインを入力してEnterキーを押してください')
 
         qth_button = tk.Button(frame1,
                                text='QTH',
                                command=self.qth_command)
         qth_button.grid(row=0, column=2)
-        qth_button_tooltip = Tooltip(qth_button, 'QTHと免許状情報を検索して表示します')
+        Tooltip(qth_button, 'QTHと免許状情報を検索して表示します')
 
         from_button = tk.Button(frame1,
                                 text='From')
@@ -83,13 +84,13 @@ class Application(tk.Frame):
                                text='QRZ',
                                command=self.qrz_command)
         qrz_button.grid(row=0, column=5)
-        qrz_button_tooltip = Tooltip(qrz_button, 'QRZ.comでコールサインを検索します')
+        Tooltip(qrz_button, 'QRZ.comでコールサインを検索します')
 
         map_button = tk.Button(frame1,
                                text='Map',
                                command=self.map_command)
         map_button.grid(row=0, column=6)
-        map_button_tooltip = Tooltip(map_button, 'Google MapsでQTHの地図を表示します')
+        Tooltip(map_button, 'Google MapsでQTHの地図を表示します')
 
         frame1.grid(pady=10)
 

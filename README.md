@@ -1,8 +1,12 @@
 # DenpaAPI
 総務省、無線局等情報検索APIからデータ取得するアプリ
 
+<!--
 [![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
 ![pylint workflow](https://github.com/JS2IIU-MH/DenpaAPI/actions/workflows/pylint.yml/badge.svg)
+-->
+![](https://byob.yarr.is/JS2IIU-MH/denpa_API/passing_lints)
+[![License: MIT](https://img.shields.io/badge/License-MIT-brightgreen.svg)](LICENSE)
 
 免責事項等につきましては、当リポジトリの[LICENSE](LICENSE)をご覧ください。
 
